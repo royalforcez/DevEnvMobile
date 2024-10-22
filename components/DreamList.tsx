@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Chip } from 'react-native-paper';
 import { useFocusEffect } from 'expo-router';
 import { useCallback } from 'react';
 
@@ -46,11 +47,11 @@ export default function DreamList() {
                     <br />
                     Hashtags:
                     <br />
-                    1. {dream.hashtags[0].id} - {dream.hashtags[0].label}
+                    1. {dream.hashtags[0].id} - <Chip onPress={() => console.log('Pressed')}>{dream.hashtags[0].label}</Chip>
                     <br />
-                    2. {dream.hashtags[1].id} - {dream.hashtags[1].label}
+                    2. {dream.hashtags[1].id} - <Chip onPress={() => console.log('Pressed')}>{dream.hashtags[1].label}</Chip>
                     <br />
-                    3. {dream.hashtags[2].id} - {dream.hashtags[2].label}
+                    3. {dream.hashtags[2].id} - <Chip onPress={() => console.log('Pressed')}>{dream.hashtags[2].label}</Chip>
                 </Text>
             ))}
         </View>
