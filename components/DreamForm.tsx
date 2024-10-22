@@ -7,6 +7,7 @@ const { width } = Dimensions.get('window');
 
 export default function DreamForm() {
     const [dreamText, setDreamText] = useState('');
+    const [emotionalFeel, setEmotionalFeel] = useState('');
     const [isLucidDream, setIsLucidDream] = useState(false);
     const [isNightmare, setIsNightmare] = useState(false);
     const [isPremo, setIsPremo] = useState(false);
@@ -56,6 +57,7 @@ export default function DreamForm() {
                 "isNightmare": isNightmare,
                 "isPremo": isPremo,
                 "newDate": new Date(),
+                "emotionalFeel": emotionalFeel,
                 hashtags: [
                     { id: hashtag1Id, label: hashtag1 },
                     { id: hashtag2Id, label: hashtag2 },
@@ -76,6 +78,7 @@ export default function DreamForm() {
             console.error('Erreur lors de la sauvegarde des données:', error);
         }
         setDreamText('');
+        setEmotionalFeel('');
         setIsLucidDream(false);
         setIsNightmare(false);
         setIsPremo(false);
@@ -94,6 +97,15 @@ export default function DreamForm() {
                 label="Rêve"
                 value={dreamText}
                 onChangeText={(text) => setDreamText(text)}
+                mode="outlined"
+                multiline
+                //numberOfLines={6}
+                style={[styles.input, { width: width * 0.8, alignSelf: 'center' }]}
+            />
+            <TextInput
+                label="Etat émotionnel avant et après le rêve"
+                value={emotionalFeel}
+                onChangeText={(text) => setEmotionalFeel(text)}
                 mode="outlined"
                 multiline
                 //numberOfLines={6}

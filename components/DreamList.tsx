@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Chip } from 'react-native-paper';
+import { Chip, Card } from 'react-native-paper';
 import { useFocusEffect } from 'expo-router';
 import { useCallback } from 'react';
+import { white } from 'react-native-paper';
+
+
+
 
 
 export default function DreamList() {
@@ -42,17 +46,23 @@ export default function DreamList() {
         <View>
             <Text style={styles.title}>Liste des Rêves :</Text>
             {dreams.map((dream, index) => (
-                <Text key={index} style={styles.dreamText}>
-                    {dream.dreamText} - {dream.isLucidDream ? 'Lucide' : ''} - {dream.isNightmare ? 'Cauchemar' : ''} - {dream.isPremo ? 'Prémonitoire' : ''} - {dream.newDate}
-                    <br />
-                    Hashtags:
-                    <br />
-                    1. {dream.hashtags[0].id} - <Chip onPress={() => console.log('Pressed')}>{dream.hashtags[0].label}</Chip>
-                    <br />
-                    2. {dream.hashtags[1].id} - <Chip onPress={() => console.log('Pressed')}>{dream.hashtags[1].label}</Chip>
-                    <br />
-                    3. {dream.hashtags[2].id} - <Chip onPress={() => console.log('Pressed')}>{dream.hashtags[2].label}</Chip>
-                </Text>
+                <Card style={styles.card}>
+                    <Card.Content>
+                        <Text key={index} style={styles.dreamText}>
+                            {dream.dreamText} - {dream.isLucidDream ? 'Lucide' : ''} - {dream.isNightmare ? 'Cauchemar' : ''} - {dream.isPremo ? 'Prémonitoire' : ''} - {dream.newDate}
+                            <br />
+                            Etat émotionnel : {dream.emotionalFeel}
+                            <br />
+                            Hashtags:
+                            <br />
+                            1. {dream.hashtags[0].id} - <Chip onPress={() => console.log('Pressed')}>{dream.hashtags[0].label}</Chip>
+                            <br />
+                            2. {dream.hashtags[1].id} - <Chip onPress={() => console.log('Pressed')}>{dream.hashtags[1].label}</Chip>
+                            <br />
+                            3. {dream.hashtags[2].id} - <Chip onPress={() => console.log('Pressed')}>{dream.hashtags[2].label}</Chip>
+                        </Text>
+                    </Card.Content>
+                </Card>
             ))}
         </View>
     );
@@ -67,4 +77,11 @@ const styles = StyleSheet.create({
         fontSize: 16,
         marginBottom: 4,
     },
+    card: {
+        backgroundColor: '#ffffff',
+        borderWidth: 1,
+        borderColor: '#000000',
+        borderRadius: 8,
+        marginTop: 25
+    }
 });
