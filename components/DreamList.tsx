@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Chip, Card } from 'react-native-paper';
 import { useFocusEffect } from 'expo-router';
 import { useCallback } from 'react';
-import { white } from 'react-native-paper';
+
 
 
 
@@ -43,6 +43,7 @@ export default function DreamList() {
     );
 
     return (
+
         <View>
             <Text style={styles.title}>Liste des Rêves :</Text>
             {dreams.map((dream, index) => (
@@ -65,6 +66,7 @@ export default function DreamList() {
                 </Card>
             ))}
         </View>
+
     );
 }
 const styles = StyleSheet.create({
