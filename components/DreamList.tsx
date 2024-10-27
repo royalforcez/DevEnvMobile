@@ -58,6 +58,8 @@ export default function DreamList() {
 
                             Etat émotionnel : {dream.emotionalFeel} {"\n"}{"\n"}
 
+                            Personnages du rêve : {dream.characters} {"\n"}{"\n"}
+
                             Hashtags:{"\n"}
 
                             1. {dream.hashtags[0].id} - <Chip onPress={() => console.log('Pressed')}>#{dream.hashtags[0].label}</Chip> {"\n"}

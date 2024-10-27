@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Dimensions, ScrollView } from 'react-native';
+import { View, StyleSheet, Dimensions, ScrollView, Text } from 'react-native';
 import { TextInput, Button, Checkbox, Chip } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -12,6 +12,7 @@ export default function DreamForm() {
     const [isLucidDream, setIsLucidDream] = useState(false);
     const [isNightmare, setIsNightmare] = useState(false);
     const [isPremo, setIsPremo] = useState(false);
+    const [characters, setCharacters] = useState('');
     const [hashtag1, setHashtag1] = useState('');
     const [hashtag2, setHashtag2] = useState('');
     const [hashtag3, setHashtag3] = useState('');
@@ -59,6 +60,7 @@ export default function DreamForm() {
                 "isPremo": isPremo,
                 "newDate": new Date(),
                 "emotionalFeel": emotionalFeel,
+                "characters": characters,
                 hashtags: [
                     { id: hashtag1Id, label: hashtag1 },
                     { id: hashtag2Id, label: hashtag2 },
@@ -86,6 +88,7 @@ export default function DreamForm() {
         setHashtag1('');
         setHashtag2('');
         setHashtag3('');
+        setCharacters('');
 
     };
 
@@ -113,6 +116,18 @@ export default function DreamForm() {
                     //numberOfLines={6}
                     style={[styles.input, { width: width * 0.8, alignSelf: 'center' }]}
                 />
+                <Text>Format attendu : Personnage ; Personnage</Text>
+                <TextInput
+                    label="Personnages présents dans le rêve"
+                    value={characters}
+                    onChangeText={(text) => setCharacters(text)}
+                    mode="outlined"
+                    multiline
+                    //numberOfLines={6}
+                    style={[styles.input, { width: width * 0.8, alignSelf: 'center' }]}
+
+                />
+
 
                 <TextInput
                     label="Hashtag 1"
@@ -175,5 +190,6 @@ const styles = StyleSheet.create({
     button: {
         marginTop: 8,
     },
+
 });
 
