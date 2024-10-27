@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Chip, Card } from 'react-native-paper';
 import { useFocusEffect } from 'expo-router';
@@ -51,15 +51,15 @@ export default function DreamList() {
                     <Card.Content>
                         <Text key={index} style={styles.dreamText}>
                             {dream.dreamText} - {dream.isLucidDream ? 'Lucide' : ''} - {dream.isNightmare ? 'Cauchemar' : ''} - {dream.isPremo ? 'Prémonitoire' : ''} - {dream.newDate}
-                            <br />
+
                             Etat émotionnel : {dream.emotionalFeel}
-                            <br />
+
                             Hashtags:
-                            <br />
+
                             1. {dream.hashtags[0].id} - <Chip onPress={() => console.log('Pressed')}>{dream.hashtags[0].label}</Chip>
-                            <br />
+
                             2. {dream.hashtags[1].id} - <Chip onPress={() => console.log('Pressed')}>{dream.hashtags[1].label}</Chip>
-                            <br />
+
                             3. {dream.hashtags[2].id} - <Chip onPress={() => console.log('Pressed')}>{dream.hashtags[2].label}</Chip>
                         </Text>
                     </Card.Content>
