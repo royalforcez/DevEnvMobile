@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
+import { View, StyleSheet, Dimensions, ScrollView } from 'react-native';
 import { TextInput, Button, Checkbox, Chip } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const { width } = Dimensions.get('window');
 
@@ -92,71 +93,73 @@ export default function DreamForm() {
         AsyncStorage.clear();
     }
     return (
-        <View style={styles.container}>
-            <TextInput
-                label="Rêve"
-                value={dreamText}
-                onChangeText={(text) => setDreamText(text)}
-                mode="outlined"
-                multiline
-                //numberOfLines={6}
-                style={[styles.input, { width: width * 0.8, alignSelf: 'center' }]}
-            />
-            <TextInput
-                label="Etat émotionnel avant et après le rêve"
-                value={emotionalFeel}
-                onChangeText={(text) => setEmotionalFeel(text)}
-                mode="outlined"
-                multiline
-                //numberOfLines={6}
-                style={[styles.input, { width: width * 0.8, alignSelf: 'center' }]}
-            />
+        <ScrollView>
+            <View style={styles.container}>
+                <TextInput
+                    label="Rêve"
+                    value={dreamText}
+                    onChangeText={(text) => setDreamText(text)}
+                    mode="outlined"
+                    multiline
+                    //numberOfLines={6}
+                    style={[styles.input, { width: width * 0.8, alignSelf: 'center' }]}
+                />
+                <TextInput
+                    label="Etat émotionnel avant et après le rêve"
+                    value={emotionalFeel}
+                    onChangeText={(text) => setEmotionalFeel(text)}
+                    mode="outlined"
+                    multiline
+                    //numberOfLines={6}
+                    style={[styles.input, { width: width * 0.8, alignSelf: 'center' }]}
+                />
 
-            <TextInput
-                label="Hashtag 1"
-                value={hashtag1}
-                onChangeText={(hashtag1) => setHashtag1(hashtag1)}
-                mode="outlined"
-                style={[styles.input, { width: width * 0.8, alignSelf: 'center' }]}
-            />
-            <TextInput
-                label="Hashtag 2"
-                value={hashtag2}
-                onChangeText={(hashtag2) => setHashtag2(hashtag2)}
-                mode="outlined"
-                style={[styles.input, { width: width * 0.8, alignSelf: 'center' }]}
-            />
-            <TextInput
-                label="Hashtag 3"
-                value={hashtag3}
-                onChangeText={(hashtag3) => setHashtag3(hashtag3)}
-                mode="outlined"
-                style={[styles.input, { width: width * 0.8, alignSelf: 'center' }]}
-            />
-            <View style={styles.checkboxContainer}>
-                <Checkbox.Item
-                    label="Rêve Lucide"
-                    status={isLucidDream ? 'checked' : 'unchecked'}
-                    onPress={() => setIsLucidDream(!isLucidDream)}
+                <TextInput
+                    label="Hashtag 1"
+                    value={hashtag1}
+                    onChangeText={(hashtag1) => setHashtag1(hashtag1)}
+                    mode="outlined"
+                    style={[styles.input, { width: width * 0.8, alignSelf: 'center' }]}
                 />
-                <Checkbox.Item
-                    label="Cauchemar"
-                    status={isNightmare ? 'checked' : 'unchecked'}
-                    onPress={() => setIsNightmare(!isNightmare)}
+                <TextInput
+                    label="Hashtag 2"
+                    value={hashtag2}
+                    onChangeText={(hashtag2) => setHashtag2(hashtag2)}
+                    mode="outlined"
+                    style={[styles.input, { width: width * 0.8, alignSelf: 'center' }]}
                 />
-                <Checkbox.Item
-                    label="Rêve Prémonitoire"
-                    status={isPremo ? 'checked' : 'unchecked'}
-                    onPress={() => setIsPremo(!isPremo)}
+                <TextInput
+                    label="Hashtag 3"
+                    value={hashtag3}
+                    onChangeText={(hashtag3) => setHashtag3(hashtag3)}
+                    mode="outlined"
+                    style={[styles.input, { width: width * 0.8, alignSelf: 'center' }]}
                 />
+                <View style={styles.checkboxContainer}>
+                    <Checkbox.Item
+                        label="Rêve Lucide"
+                        status={isLucidDream ? 'checked' : 'unchecked'}
+                        onPress={() => setIsLucidDream(!isLucidDream)}
+                    />
+                    <Checkbox.Item
+                        label="Cauchemar"
+                        status={isNightmare ? 'checked' : 'unchecked'}
+                        onPress={() => setIsNightmare(!isNightmare)}
+                    />
+                    <Checkbox.Item
+                        label="Rêve Prémonitoire"
+                        status={isPremo ? 'checked' : 'unchecked'}
+                        onPress={() => setIsPremo(!isPremo)}
+                    />
+                </View>
+                <Button mode="contained" onPress={handleDreamSubmission} style={styles.button}>
+                    Soumettre
+                </Button>
+                <Button mode="contained" onPress={handleClearAsyncStorage} style={styles.button}>
+                    Clear Async storage
+                </Button>
             </View>
-            <Button mode="contained" onPress={handleDreamSubmission} style={styles.button}>
-                Soumettre
-            </Button>
-            <Button mode="contained" onPress={handleClearAsyncStorage} style={styles.button}>
-                Clear Async storage
-            </Button>
-        </View>
+        </ScrollView>
     );
 }
 const styles = StyleSheet.create({
@@ -167,8 +170,6 @@ const styles = StyleSheet.create({
         marginBottom: 16,
     },
     checkboxContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
         marginBottom: 16,
     },
     button: {

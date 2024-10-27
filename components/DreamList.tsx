@@ -52,15 +52,15 @@ export default function DreamList() {
                         <Text key={index} style={styles.dreamText}>
                             {dream.dreamText} - {dream.isLucidDream ? 'Lucide' : ''} - {dream.isNightmare ? 'Cauchemar' : ''} - {dream.isPremo ? 'Prémonitoire' : ''} - {dream.newDate}
 
-                            Etat émotionnel : {dream.emotionalFeel}
+                            Etat émotionnel : {dream.emotionalFeel} {"\n"}
 
-                            Hashtags:
+                            Hashtags:{"\n"}
 
-                            1. {dream.hashtags[0].id} - <Chip onPress={() => console.log('Pressed')}>{dream.hashtags[0].label}</Chip>
+                            1. {dream.hashtags[0].id} - <Chip onPress={() => console.log('Pressed')}>{dream.hashtags[0].label}</Chip> {"\n"}
 
-                            2. {dream.hashtags[1].id} - <Chip onPress={() => console.log('Pressed')}>{dream.hashtags[1].label}</Chip>
+                            2. {dream.hashtags[1].id} - <Chip onPress={() => console.log('Pressed')}>{dream.hashtags[1].label}</Chip> {"\n"}
 
-                            3. {dream.hashtags[2].id} - <Chip onPress={() => console.log('Pressed')}>{dream.hashtags[2].label}</Chip>
+                            3. {dream.hashtags[2].id} - <Chip onPress={() => console.log('Pressed')}>{dream.hashtags[2].label}</Chip> {"\n"}
                         </Text>
                     </Card.Content>
                 </Card>
