@@ -50,17 +50,21 @@ export default function DreamList() {
                 <Card style={styles.card}>
                     <Card.Content>
                         <Text key={index} style={styles.dreamText}>
-                            {dream.dreamText} - {dream.isLucidDream ? 'Lucide' : ''} - {dream.isNightmare ? 'Cauchemar' : ''} - {dream.isPremo ? 'Prémonitoire' : ''} - {dream.newDate}
+                            {dream.dreamText}{"\n"}{"\n"}
 
-                            Etat émotionnel : {dream.emotionalFeel} {"\n"}
+                            Type de rêve : {dream.isLucidDream ? 'Lucide' : ''} {dream.isNightmare ? 'Cauchemar' : ''} {dream.isPremo ? 'Prémonitoire' : ''}{"\n"}{"\n"}
+
+                            Date du rêve : {dream.newDate} {"\n"}{"\n"}
+
+                            Etat émotionnel : {dream.emotionalFeel} {"\n"}{"\n"}
 
                             Hashtags:{"\n"}
 
-                            1. {dream.hashtags[0].id} - <Chip onPress={() => console.log('Pressed')}>{dream.hashtags[0].label}</Chip> {"\n"}
+                            1. {dream.hashtags[0].id} - <Chip onPress={() => console.log('Pressed')}>#{dream.hashtags[0].label}</Chip> {"\n"}
 
-                            2. {dream.hashtags[1].id} - <Chip onPress={() => console.log('Pressed')}>{dream.hashtags[1].label}</Chip> {"\n"}
+                            2. {dream.hashtags[1].id} - <Chip onPress={() => console.log('Pressed')}>#{dream.hashtags[1].label}</Chip> {"\n"}
 
-                            3. {dream.hashtags[2].id} - <Chip onPress={() => console.log('Pressed')}>{dream.hashtags[2].label}</Chip> {"\n"}
+                            3. {dream.hashtags[2].id} - <Chip onPress={() => console.log('Pressed')}>#{dream.hashtags[2].label}</Chip> {"\n"}
                         </Text>
                     </Card.Content>
                 </Card>
