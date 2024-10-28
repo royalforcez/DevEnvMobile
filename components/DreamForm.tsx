@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Dimensions, ScrollView, Text } from 'react-native';
 import { TextInput, Button, Checkbox, Chip } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import RNPickerSelect from 'react-native-picker-select';
 
 
 
@@ -15,9 +16,15 @@ export default function DreamForm() {
     const [isPremo, setIsPremo] = useState(false);
     const [characters, setCharacters] = useState('');
     const [place, setPlace] = useState('');
+    const [quality, setQuality] = useState('');
     const [hashtag1, setHashtag1] = useState('');
     const [hashtag2, setHashtag2] = useState('');
     const [hashtag3, setHashtag3] = useState('');
+    const placeholder = {
+        label: 'Qualité du sommeil : ',
+        value: null,
+        color: '#9EA0A4',
+    };
 
     const findHashtagIdByLabel = async (hashtag) => {
         try {
@@ -64,6 +71,7 @@ export default function DreamForm() {
                 "emotionalFeel": emotionalFeel,
                 "characters": characters,
                 "place": place,
+                "quality": quality,
                 hashtags: [
                     { id: hashtag1Id, label: hashtag1 },
                     { id: hashtag2Id, label: hashtag2 },
@@ -93,7 +101,7 @@ export default function DreamForm() {
         setHashtag3('');
         setCharacters('');
         setPlace('');
-
+        setQuality('');
     };
 
     const handleClearAsyncStorage = async () => {
@@ -142,6 +150,7 @@ export default function DreamForm() {
                 />
 
 
+
                 <TextInput
                     label="Hashtag 1"
                     value={hashtag1}
@@ -163,6 +172,19 @@ export default function DreamForm() {
                     mode="outlined"
                     style={[styles.input, { width: width * 0.8, alignSelf: 'center' }]}
                 />
+
+                <RNPickerSelect
+                    placeholder={placeholder}
+                    value={quality}
+                    onValueChange={(value) => setQuality(value)}
+                    items={[
+                        { label: 'Très Bon', value: 'Très Bon' },
+                        { label: 'Bon', value: 'Bon' },
+                        { label: 'Moyen', value: 'Moyen' },
+                        { label: 'Mauvais', value: 'Mauvais' },
+                    ]}
+                />
+
                 <View style={styles.checkboxContainer}>
                     <Checkbox.Item
                         label="Rêve Lucide"
