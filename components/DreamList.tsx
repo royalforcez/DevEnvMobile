@@ -60,6 +60,8 @@ export default function DreamList() {
 
                             Personnages du rêve : {dream.characters} {"\n"}{"\n"}
 
+                            Lieu du rêve : {dream.place} {"\n"}{"\n"}
+
                             Hashtags:{"\n"}
 
                             1. {dream.hashtags[0].id} - <Chip onPress={() => console.log('Pressed')}>#{dream.hashtags[0].label}</Chip> {"\n"}

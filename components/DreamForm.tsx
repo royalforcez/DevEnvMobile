@@ -4,6 +4,7 @@ import { TextInput, Button, Checkbox, Chip } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
+
 const { width } = Dimensions.get('window');
 
 export default function DreamForm() {
@@ -13,6 +14,7 @@ export default function DreamForm() {
     const [isNightmare, setIsNightmare] = useState(false);
     const [isPremo, setIsPremo] = useState(false);
     const [characters, setCharacters] = useState('');
+    const [place, setPlace] = useState('');
     const [hashtag1, setHashtag1] = useState('');
     const [hashtag2, setHashtag2] = useState('');
     const [hashtag3, setHashtag3] = useState('');
@@ -61,6 +63,7 @@ export default function DreamForm() {
                 "newDate": new Date(),
                 "emotionalFeel": emotionalFeel,
                 "characters": characters,
+                "place": place,
                 hashtags: [
                     { id: hashtag1Id, label: hashtag1 },
                     { id: hashtag2Id, label: hashtag2 },
@@ -89,6 +92,7 @@ export default function DreamForm() {
         setHashtag2('');
         setHashtag3('');
         setCharacters('');
+        setPlace('');
 
     };
 
@@ -123,6 +127,15 @@ export default function DreamForm() {
                     onChangeText={(text) => setCharacters(text)}
                     mode="outlined"
                     multiline
+                    //numberOfLines={6}
+                    style={[styles.input, { width: width * 0.8, alignSelf: 'center' }]}
+
+                />
+                <TextInput
+                    label="Lieu du rêve"
+                    value={place}
+                    onChangeText={(text) => setPlace(text)}
+                    mode="outlined"
                     //numberOfLines={6}
                     style={[styles.input, { width: width * 0.8, alignSelf: 'center' }]}
 
