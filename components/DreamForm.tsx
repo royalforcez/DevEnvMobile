@@ -6,6 +6,7 @@ import RNPickerSelect from 'react-native-picker-select';
 
 
 
+
 const { width } = Dimensions.get('window');
 
 export default function DreamForm() {
@@ -20,11 +21,16 @@ export default function DreamForm() {
     const [hashtag1, setHashtag1] = useState('');
     const [hashtag2, setHashtag2] = useState('');
     const [hashtag3, setHashtag3] = useState('');
+
     const placeholder = {
         label: 'Qualité du sommeil : ',
         value: null,
         color: '#9EA0A4',
     };
+    const [meaning, setMeaning] = useState('');
+    //const { dream, index } = route.params || {};
+
+
 
     const findHashtagIdByLabel = async (hashtag) => {
         try {
@@ -72,6 +78,7 @@ export default function DreamForm() {
                 "characters": characters,
                 "place": place,
                 "quality": quality,
+                "meaning": meaning,
                 hashtags: [
                     { id: hashtag1Id, label: hashtag1 },
                     { id: hashtag2Id, label: hashtag2 },
@@ -82,6 +89,7 @@ export default function DreamForm() {
 
             // Sauvegarder le tableau mis à jour dans AsyncStorage
             await AsyncStorage.setItem('dreamFormDataArray', JSON.stringify(formDataArray));
+
             console.log(
                 'AsyncStorage: ',
                 AsyncStorage.getItem('dreamFormDataArray')
@@ -102,6 +110,7 @@ export default function DreamForm() {
         setCharacters('');
         setPlace('');
         setQuality('');
+        setMeaning('');
     };
 
     const handleClearAsyncStorage = async () => {
@@ -149,7 +158,15 @@ export default function DreamForm() {
 
                 />
 
+                <TextInput
+                    label="Signification"
+                    value={meaning}
+                    onChangeText={(text) => setMeaning(text)}
+                    mode="outlined"
+                    //numberOfLines={6}
+                    style={[styles.input, { width: width * 0.8, alignSelf: 'center' }]}
 
+                />
 
                 <TextInput
                     label="Hashtag 1"
@@ -208,6 +225,7 @@ export default function DreamForm() {
                 <Button mode="contained" onPress={handleClearAsyncStorage} style={styles.button}>
                     Clear Async storage
                 </Button>
+
             </View>
         </ScrollView>
     );

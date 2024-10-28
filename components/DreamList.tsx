@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Chip, Card } from 'react-native-paper';
+import { Chip, Card, Button } from 'react-native-paper';
 import { useFocusEffect } from 'expo-router';
 import { useCallback } from 'react';
 
@@ -12,6 +12,7 @@ import { useCallback } from 'react';
 
 export default function DreamList() {
     const [dreams, setDreams] = useState([]);
+
 
     const fetchData = async () => { //type arrow function
         try {
@@ -41,6 +42,8 @@ export default function DreamList() {
             }
         }, [])
     );
+
+
 
     return (
 
@@ -72,6 +75,7 @@ export default function DreamList() {
 
                             3. {dream.hashtags[2].id} - <Chip onPress={() => console.log('Pressed')}>#{dream.hashtags[2].label}</Chip> {"\n"}
                         </Text>
+
                     </Card.Content>
                 </Card>
             ))}
