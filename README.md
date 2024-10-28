@@ -3,7 +3,7 @@ Bienvenue dans l'application DreamJournal.
 Pour commencer à utilisrr l'application il va falloir installer expo via la commande suivante :  
 npm install expo  
 
-Ensuite démarrer à la racine du projet avec package.json :  
+Ensuite démarrer à la racine du projet avec package.json :    
 
 npx expo start  
 
