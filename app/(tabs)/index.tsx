@@ -7,7 +7,7 @@ export default function TabOneScreen() {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Text style={styles.title}>Raconte ton rêve</Text>
+        <Text style={styles.title}>Dream Journal</Text>
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
         <DreamForm />
       </View>
