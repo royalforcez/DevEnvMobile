@@ -45,7 +45,7 @@ export default function DreamList() {
     return (
 
         <View>
-            <Text style={styles.title}>Liste des Rêves :</Text>
+
             {dreams.map((dream, index) => (
                 <Card style={styles.card}>
                     <Card.Content>
