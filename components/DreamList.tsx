@@ -13,6 +13,15 @@ import { useCallback } from 'react';
 export default function DreamList() {
     const [dreams, setDreams] = useState([]);
 
+    const handleDeleteDream = async (index) => {
+        try {
+            const updatedDreams = dreams.filter((_, i) => i !== index);
+            setDreams(updatedDreams);
+            await AsyncStorage.setItem('dreamFormDataArray', JSON.stringify(updatedDreams));
+        } catch (error) {
+            console.error('Erreur lors de la suppression du rêve:', error);
+        }
+    };
 
     const fetchData = async () => { //type arrow function
         try {
@@ -75,7 +84,9 @@ export default function DreamList() {
 
                             3. {dream.hashtags[2].id} - <Chip onPress={() => console.log('Pressed')}>#{dream.hashtags[2].label}</Chip> {"\n"}
                         </Text>
-
+                        <Button mode="contained" color="red" onPress={() => handleDeleteDream(index)}>
+                            Supprimer
+                        </Button>
                     </Card.Content>
                 </Card>
             ))}
