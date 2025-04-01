@@ -24,7 +24,7 @@ export default function DreamForm() {
 
     const placeholder = {
         label: 'Qualité du sommeil : ',
-        value: null,
+        value: '',
         color: '#9EA0A4',
     };
     const [meaning, setMeaning] = useState('');
@@ -32,7 +32,7 @@ export default function DreamForm() {
 
 
 
-    const findHashtagIdByLabel = async (hashtag) => {
+    const findHashtagIdByLabel = async (hashtag: string) => {
         try {
             // Récupère les données des rêves stockées dans le AsyncStorage
             const existingDreams = await AsyncStorage.getItem('dreamFormDataArray');
